@@ -2,9 +2,9 @@
   TODO List
 </h1>
 
-API para gerenciar tarefas (CRUD) que faz parte [desse desafio](https://github.com/simplify-liferay/desafio-junior-backend-simplify) para pessoas desenvolvedoras backend júnior, que se candidatam para a Simplify.
+This is an API for managing tasks (CRUD) that is part of [this challenge](https://github.com/simplify-liferay/desafio-junior-backend-simplify) for junior backend developers applying to Simplify.
 
-## Tecnologias
+## Technologies
  
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Spring MVC](https://docs.spring.io/spring-framework/reference/web/webmvc.html)
@@ -12,35 +12,35 @@ API para gerenciar tarefas (CRUD) que faz parte [desse desafio](https://github.c
 - [SpringDoc OpenAPI 3](https://springdoc.org/v2/#spring-webflux-support)
 - [Mysql](https://dev.mysql.com/downloads/)
 
-## Práticas adotadas
+## Adopted Practices
 
 - SOLID, DRY, YAGNI, KISS
 - API REST
-- Consultas com Spring Data JPA
-- Injeção de Dependências
-- Tratamento de respostas de erro
-- Geração automática do Swagger com a OpenAPI 3
+- Spring Data JPA queries for efficient data retrieval
+- Dependency Injection for loose coupling and modular design
+- Error response handling to ensure graceful error management
+- Automated Swagger generation using OpenAPI 3 for API documentation
 
-## Como Executar
+## How to Run
 
-- Clonar repositório git
-- Construir o projeto:
+- Clone the Git repository
+- Build the project:
 ```
 $ ./mvnw clean package
 ```
-- Executar a aplicação:
+- Run the application:
 ```
 $ java -jar target/todolist-0.0.1-SNAPSHOT.jar
 ```
 
-A API poderá ser acessada em [localhost:8080](http://localhost:8080).
-O Swagger poderá ser visualizado em [localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+The API can be accessed at [localhost:8080](http://localhost:8080).
+You can view the Swagger documentation by visiting [localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html).
 
 ## API Endpoints
 
-Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](https://www.postman.com):
+For the HTTP requests below, the tool used was [postman](https://www.postman.com):
 
-- Criar Tarefa 
+- create Task
 ```
 curl --location --request POST 'http://localhost:8080/tasks' --header 'Content-Type: application/json' --data '{ 
     "name": "1teste",
@@ -50,12 +50,12 @@ curl --location --request POST 'http://localhost:8080/tasks' --header 'Content-T
 }'
 ```
 
-- Listar Tarefas
+- List Tasks
 ```
 curl --location --request GET 'http://localhost:8080/tasks'
 ```
 
-- Atualizar Tarefa
+- Update Task
 ```
 curl --location --request PUT 'http://localhost:8080/tasks/74' --header 'Content-Type: application/json' --data '{
     "name": "test3Name",
@@ -65,7 +65,7 @@ curl --location --request PUT 'http://localhost:8080/tasks/74' --header 'Content
 }'
 ```
 
-- Remover Tarefa
+- Delete Task
 ```
 curl --location --request DELETE 'http://localhost:8080/tasks/74' --header 'Content-Type: application/json'
 ```
