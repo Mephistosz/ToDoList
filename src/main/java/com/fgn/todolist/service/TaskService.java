@@ -15,30 +15,30 @@ import com.fgn.todolist.service.exception.ResourceNotFoundException;
 public class TaskService {
 
   @Autowired
-  private TaskRepository taskrepository;
+  private TaskRepository taskRepository;
 
   public Task findById(Long id) {
-    return taskrepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Objeto não encontrado!"));
+    return taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Object not found!"));
   }
 
   public List<Task> findAll() {
     Sort sort = Sort.by("priority").descending().and(Sort.by("name").ascending());
 
-    return taskrepository.findAll(sort);
+    return taskRepository.findAll(sort);
   }
 
   public Task insert(Task task) {
-    if (task.getId() != null && taskrepository.existsById(task.getId())) {
-      throw new ResourceAlreadyExistsException("Objeto já existe!");
+    if (task.getId() != null && taskRepository.existsById(task.getId())) {
+      throw new ResourceAlreadyExistsException("Object already exists!");
     }
-    return taskrepository.save(task);
+    return taskRepository.save(task);
 
   }
 
   public void update(Task task) {
     Task taskToUpdate = findById(task.getId());
     updateData(taskToUpdate, task);
-    taskrepository.save(taskToUpdate);
+    taskRepository.save(taskToUpdate);
 
   }
 
@@ -51,7 +51,7 @@ public class TaskService {
 
   public void delete(Long id) {
     findById(id);
-    taskrepository.deleteById(id);
+    taskRepository.deleteById(id);
   }
 
 }

@@ -18,6 +18,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.fgn.todolist.model.entities.Task;
 import com.fgn.todolist.service.TaskService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/tasks")
 public class TaskController {
@@ -36,7 +38,7 @@ public class TaskController {
   }
 
   @PostMapping
-  public ResponseEntity<Task> insert(@RequestBody Task task) {
+  public ResponseEntity<Task> insert(@RequestBody @Valid Task task) {
 
     taskService.insert(task);
 

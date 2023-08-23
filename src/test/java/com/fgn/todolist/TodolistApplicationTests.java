@@ -18,7 +18,7 @@ class TodolistApplicationTests {
 
 	@Test
 	void testCreateTaskSucess() {
-		Task task = new Task("automate testing", "automate testing",
+		var task = new Task("automate testing", "automate testing",
 				StatusEnum.BACKLOG, PriorityEnum.LOW);
 
 		webTestClient
@@ -27,6 +27,19 @@ class TodolistApplicationTests {
 				.bodyValue(task)
 				.exchange()
 				.expectStatus().isCreated();
+
+	}
+
+	@Test
+	void testCreateTaskFailure() {
+		var task = new Task("", "", StatusEnum.BACKLOG, PriorityEnum.LOW);
+
+		webTestClient
+				.post()
+				.uri("/tasks")
+				.bodyValue(task)
+				.exchange()
+				.expectStatus().is5xxServerError();
 
 	}
 
